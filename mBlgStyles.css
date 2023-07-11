@@ -1,0 +1,53 @@
+body {
+        margin-left: 7%;
+        margin-right: 7%;
+        text-align: center;
+        background-color: turquoise;
+        color: aliceblue;
+}
+
+#tHeader, #tFooter, #container {
+        width: 100%;
+}
+
+#tFooter th {
+        border : 9px groove powderblue;
+        background-color: cadetblue;
+        border-collapse: collapse;
+        border-radius: 5px;
+}
+
+#tHeader button {
+        border : 9px groove powderblue;
+        background-color: cadetblue;
+        border-collapse: collapse;
+        border-radius: 5px;
+        width: 100%;
+        color: inherit;
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+}
+
+.err {
+        color: brown;
+}
+
+#container {
+        position: relative;
+}
+
+#imgAcc {
+        width: 100%;
+        height: auto;
+        opacity: 0,1;
+        border-radius: 7px;
+}
+
+#msgBvn {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        font-size: 35px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
