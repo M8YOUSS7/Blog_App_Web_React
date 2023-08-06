@@ -51,3 +51,20 @@ body {
         font-size: 35px;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+#slcPjt {
+        border : 9px groove powderblue;
+        background-color: cadetblue;
+        border-collapse: collapse;
+        border-radius: 5px;
+        width: 50%;
+        color: inherit;
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+}
+
+#prjLab {
+        width: 50%;
+        text-align: left;
+}

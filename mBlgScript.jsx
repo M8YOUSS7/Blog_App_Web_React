@@ -44,16 +44,62 @@ class AffDate extends React.Component {
         }
 }
 
+class SlcPjt extends React.Component {
+        constructor(props) {
+                super(props)
+        
+                this.state = {
+                        typeProjet: 'ts'
+                }
+
+                this.handleOptionChange    =this.handleOptionChange.bind(this)
+        }
+        
+        handleOptionChange(e) {
+                this.setState({
+                        typeProjet: e.target.value
+                })
+        }
+
+        afficheSelection(typeProjet) {
+                switch(typeProjet) { 
+                        case 'stj' :
+                                return <p>Realisations dans le cadre des stages</p>;
+                        case 'scl' :
+                                return <p>Realisations Scolaires</p>;
+                        case 'prs' :
+                                return <p>Realisations Personnels</p>;
+                        default:
+                                return <p>Tous les type de realisations</p>;
+                }
+        }
+
+        render() {
+                return <React.Fragment>
+                        <label htmlFor="sltPjt" id="prjLab">Projets :</label>
+                        <select name="slcPjt" id="slcPjt" value={this.state.typeProjet} onChange={this.handleOptionChange}>
+                                <option value="tou">Tous</option>
+                                <option value="stj">Stage</option>
+                                <option value="scl">Scolaire</option>
+                                <option value="prs">Personnel</option>
+                        </select>
+                        <div id="affSel">{this.afficheSelection(this.state.typeProjet)}</div>
+                </React.Fragment>
+        }
+}
+
 //---------------------------------------------------------------- Pages
 
 class App extends React.Component {
         constructor(props) {
                 super(props)
 
-                this.state      ={container: null}
+                this.state      ={
+                        container: undefined
+                }
 
                 this.Accueil    =this.Accueil.bind(this)
-                this.Test       =this.Test.bind(this)
+                this.Passions       =this.Passions.bind(this)
                 this.Projets    =this.Projets.bind(this)
                 this.Apropos    =this.Apropos.bind(this)
         }
@@ -63,10 +109,11 @@ class App extends React.Component {
         }
 
         componentWillUnmount() {
-                this.setState({container: null})
+                
         }
 
         Accueil() {
+                document.title ="Bienvenu Sur Mon Blog"
                 this.setState({container:
                         <React.Fragment>
                                 <img src='img/imgAcc.jpg' alt='immage accueil' id='imgAcc'/>
@@ -74,21 +121,24 @@ class App extends React.Component {
                         </React.Fragment>})
         }
 
-        Test(e) {
+        Passions(e) {
+                document.title ="Passions"
                 this.setState({container:
                         <React.Fragment>
-                                <h1>Tests</h1>
+                                <h1>Passions</h1>
                         </React.Fragment>})
         }
 
         Projets(e) {
+                document.title ="Projets"
                 this.setState({container:
                         <React.Fragment>
-                                <h1>Projets</h1>
+                                <SlcPjt/>
                         </React.Fragment>})
         }
 
         Apropos(e) {
+                document.title ="A Propos"
                 this.setState({container:
                         <React.Fragment>
                                 <h1>A Propos</h1>
@@ -96,14 +146,14 @@ class App extends React.Component {
         }
 
         render() {
-                const hd        = [['Accueil', this.Accueil],
-                                ['Tests', this.Test],
+                const hd =     [['Accueil', this.Accueil],
                                 ['Projets', this.Projets],
+                                ['Passions', this.Passions],
                                 ['A Propos', this.Apropos]]
                 const ft        = ['MAHAMAT YOUSSOUF Youssouf', <AffDate/>]
 
                 return  <React.Fragment>
-                                <header id="hdTlBr"><TlBrBtn name="tHeader" tab={hd}/></header>
+                                <header id="hdTlBr"><TlBrBtn name="tHeader" tab={hd} onChange={this.handlePageChange}/></header>
                                 <div id="container">{this.state.container}</div>
                                 <footer id="ftTlBr"><TlBr name="tFooter" tab={ft}/></footer>
                         </React.Fragment>
